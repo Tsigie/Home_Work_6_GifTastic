@@ -1,0 +1,68 @@
+<DOCTYPE html>
+<html lang="en-us">
+<head>
+<title>Favorite Designers</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<div id="buttons-view"></div>
+<div id="buttons">
+	<button data-person="michael kors">Michael Kors</button>
+	<button data-person="vera wang">Vera Wang</button>
+	<button data-person="tom ford">Tom Ford</button>
+	<button data-person="ralph lauren">Ralph Lauren</button>
+	<button data-person="marc jacobs">Marc Jacobs</button>
+	<button data-person="donna karan">Donna Karan</button>
+	<button data-person="coco chanel">Coco Chanel</button>
+	<button data-person="betsey johnson">Betsey Johnson</button>
+	<button data-person="donatella versace">Donatella Versace</button>
+	<button data-person="christian louboutin">Christian Louboutin</button>
+	<button data-person="hubert de givenchy">Hubert de Givenchy</button>
+	<button data-person="jason wu">Jason Wu</button>
+
+	<img src="<iframe src="//giphy.com/embed/l2Sq3ZwCBXaGsa9zO" width="480" height="270.28391167192433" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/nyfw-models-designer-lookbooks-vivienne-tam-l2Sq3ZwCBXaGsa9zO">via GIPHY</a></p> " data-still="https://media.giphy.com/media/l2Sq3ZwCBXaGsa9zO/giphy.gif " data-animpate=" " data-state="still" class="gif"></div>
+<div class="hdtb-mitem hdtb-msel hdtb-imb">Images</div>
+
+	<div id="gifs-appear-here"></div>
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+
+<div style="max-width:480px" id="_giphy_l2Sq3ZwCBXaGsa9zO"></div><script>var _gif_artist="nyfw";var _gif_artist_avatar="https://media.giphy.com/avatars/nyfw/lfJW70P8q9ww.jpg";var _giphy = _giphy || [];_giphy.push({ id:"l2Sq3ZwCBXaGsa9zO", w:480, h:270.28391167192433, clickthrough_url: "http://giphy.com/gifs/nyfw-models-designer-lookbooks-vivienne-tam-l2Sq3ZwCBXaGsa9zO" });var g = document.createElement("script");g.type = "text/javascript";g.async = true;g.src = ("https:" == document.location.protocol ? "https://" : "http://") + "giphy.com/static/js/widgets/embed.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(g, s);//
+
+var favoriteDesigners = ["Michael Kors", "Vera Wang", "Tom Ford", "Ralph Lauren", "Marc Jacobs", "Donna Karan", "Coco Chanel", "Betsey Johnson", "Donatella Versace", "Christian Louboutin", "Hubert de Givenchy", "Jason Wu" ]
+
+//http://media1.giphy.com/media/COj5wGlA5HX1u/200_s.gif"//
+
+ $("button").on("click", function() {
+      var person = $(this).attr("data-person");
+      var queryURL = "https://media.giphy.com/media/l2Sq3ZwCBXaGsa9zO/giphy.gif";
+
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+        .done(function(response) {
+          var results = response.data;
+
+          for (var i = 0; i < results.length; i++) {
+            var gifDiv = $("<div class='item'>");
+
+            var rating = results[i].rating;
+
+            var p = $("<p>").text("Rating: " + rating);
+
+            var personImage = $("<img>");
+            personImage.attr("src", results[i].images.fixed_height.url);
+
+            gifDiv.prepend(p);
+            gifDiv.prepend(personImage);
+
+            $("#gifs-appear-here").prepend(gifDiv);
+          }
+        });
+    });
+</script>
+</body>
+</html>
